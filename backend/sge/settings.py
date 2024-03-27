@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'djoser',
     'main'
 ]
+#informa para o django usar o CustomUser ao invés do user comum
+AUTH_USER_MODEL = 'main.CustomUser'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
