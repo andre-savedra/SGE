@@ -64,7 +64,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://*','https://*']
+CSRF_TRUSTED_ORIGINS = ['https://humane-walk-production-8abc.up.railway.app','http://localhost','127.0.0.1']
 
 ROOT_URLCONF = 'sge.urls'
 
