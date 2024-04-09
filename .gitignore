@@ -1,8 +1,10 @@
 node_modules
-frontend/node_modules
+frontend/sge-front/node_modules
 backend/venv
 venv
 sge/env
 sge/.env
 .env
 env
+frontend/sge-front/env
+frontend/sge-front/.env
