@@ -186,3 +186,12 @@ class AdminPlanStatus(admin.ModelAdmin):
     list_per_page = 10
 
 admin.site.register(PlanStatus,AdminPlanStatus)
+
+
+class AdminChatBot(admin.ModelAdmin):
+    list_display = ('id','createdDate','scheduledDate')
+    list_display_links = ('id','createdDate','scheduledDate',)
+    search_fields = ('scheduledDate',)
+    list_per_page = 10
+
+admin.site.register(ChatBot,AdminChatBot)
