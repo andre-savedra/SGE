@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    "django_apscheduler",
     'main'
 ]
 #informa para o django usar o CustomUser ao invés do user padrão:

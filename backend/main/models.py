@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils import timezone
 from .manager import *
+from django.core.validators import FileExtensionValidator
 
 #criando uma classe de usuário customizada para substituir a padrão com
 #atributos desejados:
@@ -278,9 +279,30 @@ class PlanStatus(models.Model):
     
 
 class ChatBot(models.Model):
-    file = models.FileField(upload_to='chatbot')
+    file = models.FileField(upload_to='chatbot', validators=[FileExtensionValidator(allowed_extensions=['xlsx'])])
+    message = models.TextField(max_length=1000)
     createdDate = models.DateTimeField(auto_now_add=True)
     scheduledDate = models.DateTimeField()
+    done = models.BooleanField(default=False)
 
     def __str__(self):
         return 'chatBot'
+
+
+LOG_TYPE = [
+    ('1', 'Número Indisponível'),
+    ('2', 'Dado Incorreto'),
+    ('3', 'API Indisponível'),
+    ('4', 'Erro Desconhecido')
+]
+
+class FileLogs(models.Model):
+    chatbotFK = models.ForeignKey(ChatBot, related_name='fileLogChatBot', on_delete=models.CASCADE)
+    response = models.CharField(max_length=1000)
+    type = models.CharField(max_length=30, choices=LOG_TYPE)
+    row = models.IntegerField()
+    phoneNumber = models.CharField(max_length=15)
+
+    def __str__(self):
+        return self.phoneNumber
+

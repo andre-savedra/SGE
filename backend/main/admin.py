@@ -195,3 +195,12 @@ class AdminChatBot(admin.ModelAdmin):
     list_per_page = 10
 
 admin.site.register(ChatBot,AdminChatBot)
+
+
+class AdminFileLogs(admin.ModelAdmin):
+    list_display = ('id','type','phoneNumber')
+    list_display_links = ('id','type','phoneNumber',)
+    search_fields = ('type','phoneNumber',)
+    list_per_page = 10
+
+admin.site.register(FileLogs,AdminFileLogs)
