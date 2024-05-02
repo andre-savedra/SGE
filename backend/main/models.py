@@ -298,11 +298,11 @@ LOG_TYPE = [
 
 class FileLogs(models.Model):
     chatbotFK = models.ForeignKey(ChatBot, related_name='fileLogChatBot', on_delete=models.CASCADE)
-    response = models.CharField(max_length=1000)
+    response = models.CharField(max_length=1000, null=True, blank=True)
     type = models.CharField(max_length=30, choices=LOG_TYPE)
-    row = models.IntegerField()
-    phoneNumber = models.CharField(max_length=15)
+    row = models.IntegerField(null=True,blank=True)
+    phoneNumber = models.CharField(max_length=15,null=True,blank=True)
 
     def __str__(self):
-        return self.phoneNumber
+        return self.chatbotFK.message
 
