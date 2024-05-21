@@ -71,6 +71,8 @@
          <section class="login_panel">
             <div class="login_content flex_center">
                 <h1>LOGIN</h1>
+                <Avatar label="BCD" class="mr-2" size="xlarge" />
+
                 <form class="login_form" v-on:submit.prevent="submitLogin">
                     <div class="input_container">
                         <CustomInput type="email" label="LOGIN" inputId="user_login"

@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   ],
   primevue: {
     components: {
-      include: ['Button']
+      include: ['Button','Avatar']
     }
   },
   css: [
