@@ -6,13 +6,14 @@ import requests
 from django.conf import settings
 from .messenger import *
 
-TOKEN = getattr(settings,'META_TOKEN')
-ENDPOINT = getattr(settings,'META_ENDPOINT')
+TOKEN = getattr(settings,'MESSANGER_TOKEN')
+ENDPOINT = getattr(settings,'MESSANGER_ENDPOINT')
+INTERVAL = int(getattr(settings, 'MESSANGER_JOB_INTERVAL'))
 
 def StartChatBotScheduler():
     scheduler = BackgroundScheduler()
     scheduler.remove_all_jobs()
-    scheduler.add_job(ChatBotJob, 'interval', seconds=10)
+    scheduler.add_job(ChatBotJob, 'interval', seconds=INTERVAL)
     scheduler.start()
 
 def SendMessage(message, name, phone):

@@ -24,20 +24,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rgi9-e-+s0$%iw37a4_nn75@(dqhkf096a(x_u!m*6+d@5c_l=' #env('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-production_server = 'sge-senai-mange.up.railway.app'
+production_server = env('BACKEND_SERVER')
 
 ALLOWED_HOSTS = ['*']
 
-# CSRF_TRUSTED_ORIGINS = [
-#     'http://localhost',
-#     '127.0.0.1',
-#     'https://' + production_server
-# ]
+CSRF_TRUSTED_ORIGINS = [    
+    'https://' + production_server
+]
 
 
 # Application definition
@@ -56,7 +54,7 @@ INSTALLED_APPS = [
     "django_apscheduler",
     'main'
 ]
-#informa para o django usar o CustomUser ao invés do user padrão:
+
 AUTH_USER_MODEL = 'main.CustomUser'
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -164,5 +162,8 @@ REST_FRAMEWORK = {
     ],
 }
 
-META_ENDPOINT = 'https://graph.facebook.com/v18.0/270599649478573/messages'
-META_TOKEN = 'EAAGcrwHTTQ0BO4ojrHgM9XoaOcwCtUgCyNZAej6WyuhD77VpYqxd7z2HaPneABM8RVnZBSSIqmkcHK7ZCl9FsMnDPrGHCHL2ldWPV8cWhlp8hV8spsFfAQy76YVjx1w9ppGO74G7GYTNlXcLrJ98sJEdtRgPjVhjpffhMM8XLskc1KMzZAnnCeslTSjii60mo4l6IMA9UUebYLSgYEJQUPZCXf8m8fwZDZD'
+MESSANGER_ENDPOINT = env('SGE_WHATS_ENDPOINT')
+MESSANGER_TOKEN = env('SGE_WHATS_TOKEN')
+MESSANGER_JOB_INTERVAL = env('SGE_WHATS_INTERVAL')
+
+
